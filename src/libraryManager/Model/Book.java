@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import libraryManager.resources.ResourceReader;
 
 /**
  * 
@@ -18,19 +19,19 @@ public class Book extends LibraryItem {
 	public enum Cover {
 		HARDCOVER {
 			public String toString() {
-				return "Hardcover";
+				return ResourceReader.getString("Book.Hardcover"); //$NON-NLS-1$
 			}
 		},
 		
 		PAPERBACK {
 			public String toString() {
-				return "Paperback";
+				return ResourceReader.getString("Book.Paperback"); //$NON-NLS-1$
 			}
 		},
 		
 		SOFTCOVER {
 			public String toString() {
-				return "Softcover";
+				return ResourceReader.getString("Book.Softcover"); //$NON-NLS-1$
 			}
 		}
 	}
@@ -41,13 +42,13 @@ public class Book extends LibraryItem {
 	public enum Kind {
 		NOVEL {
 			public String toString() {
-				return "Novel";
+				return ResourceReader.getString("Book.Novel"); //$NON-NLS-1$
 			}
 		},
 		
 		MANGA {
 			public String toString() {
-				return "Manga";
+				return ResourceReader.getString("Book.Manga"); //$NON-NLS-1$
 			}
 		}
 	}
@@ -72,7 +73,7 @@ public class Book extends LibraryItem {
 	 * @param location
 	 * @param comment
 	 */
-	public Book(String titel, String author, String series, short seriesNumber, 
+	public Book(String titel, String author, String series, int seriesNumber, 
 			String publisher, Kind kind, String language, Cover cover, 
 			String location, String lentTo, String comment) {
 		super(titel, location, series, seriesNumber, comment);
