@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
@@ -26,7 +27,7 @@ public class Main extends Application {
 	private Stage primaryStage;
 	//private MainGUIController mainGUICtrl;
 	
-	private ObservableList<Book> bookList;
+	private ObservableList<Book> bookList = FXCollections.observableArrayList();;
 	
 	/**
 	 * 
@@ -36,6 +37,7 @@ public class Main extends Application {
 		try {
 			this.primaryStage = primaryStage;
 			bundle = ResourceBundle.getBundle("libraryManager.resources.language");
+			
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/MainGUI.fxml"), bundle);
 			BorderPane root = loader.load();
@@ -83,5 +85,9 @@ public class Main extends Application {
 	
 	public void addBook(Book book) {
 		bookList.add(book);
+	}
+	
+	public String getString(String key) {
+		return bundle.getString(key);
 	}
 }
