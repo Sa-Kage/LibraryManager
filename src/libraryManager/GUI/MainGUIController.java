@@ -1,6 +1,9 @@
 package libraryManager.GUI;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import libraryManager.Main;
 
 /**
  * 
@@ -9,8 +12,18 @@ import javafx.fxml.FXML;
  */
 public class MainGUIController {
 
+	private Main controller;
+	
+	@FXML
+	private TableView bookTable;
+	
 	@FXML
 	private void showAddBookDialog() {
-		System.out.println("Adding book");
+		controller.showAddBookDialog();
+	}
+	
+	public void initialize(Main main) {
+		controller = main;
+		bookTable.setPlaceholder(new Label(""));
 	}
 }
