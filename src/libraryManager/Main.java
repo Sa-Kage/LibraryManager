@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -12,12 +13,24 @@ import javafx.scene.layout.BorderPane;
 
 import libraryManager.GUI.AddBookController;
 import libraryManager.GUI.MainGUIController;
+import libraryManager.Model.Book;
 
+/**
+ * 
+ * @author Alexander Luebbe
+ *
+ */
 public class Main extends Application {
 	
 	private ResourceBundle bundle;
 	private Stage primaryStage;
+	//private MainGUIController mainGUICtrl;
 	
+	private ObservableList<Book> bookList;
+	
+	/**
+	 * 
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -27,8 +40,9 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/MainGUI.fxml"), bundle);
 			BorderPane root = loader.load();
 			MainGUIController mainGUICtrl = loader.getController();
+			mainGUICtrl.setMain(this);
+			mainGUICtrl.setBookList(bookList);
 			
-			mainGUICtrl.initialize(this);
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setMaximized(true);
@@ -53,7 +67,7 @@ public class Main extends Application {
 			addBook = loader.load();
 			AddBookController addBookCtrl = loader.getController();
 			
-			//addBookCtrl.initialize(this);
+			addBookCtrl.setMain(this);
 			Scene scene = new Scene(addBook);
 			Stage stage = new Stage();
 			stage.setResizable(false);
@@ -65,5 +79,9 @@ public class Main extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void addBook(Book book) {
+		bookList.add(book);
 	}
 }
