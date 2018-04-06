@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -56,19 +57,23 @@
               <menus>
                 <Menu mnemonicParsing="false" text="%MainGUI.File">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="%MainGUI.New" />
+                        <MenuItem mnemonicParsing="false" text="%MainGUI.Open" />
+                        <MenuItem mnemonicParsing="false" text="%MainGUI.Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="%MainGUI.Save" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="%MainGUI.SaveAs" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="%MainGUI.Quit" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="%MainGUI.AddItem">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Book" />
+                    <MenuItem mnemonicParsing="false" text="%MainGUI.Book" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="%MainGUI.Movie" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="%MainGUI.About">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
+                <Menu mnemonicParsing="false" text="%MainGUI.About" />
               </menus>
             </MenuBar>
             <TextField prefHeight="25.0" prefWidth="188.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="2.0" />
