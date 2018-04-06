@@ -39,12 +39,7 @@
             <Label text="%General.Location" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
             <Label text="%General.LentTo" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
             <Label text="%General.Comment" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets right="5.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField GridPane.columnIndex="1" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
@@ -54,9 +49,14 @@
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.columnSpan="2">
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="5.0" />
                </GridPane.margin>
             </TextField>
             <TextField GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
@@ -64,14 +64,21 @@
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
+            <ChoiceBox maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </ChoiceBox>
             <TextField GridPane.columnIndex="4">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
+            <ChoiceBox maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin>
+            </ChoiceBox>
             <TextField GridPane.columnIndex="4" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
@@ -87,16 +94,6 @@
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
-            <ChoiceBox maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="5.0" right="5.0" />
-               </GridPane.margin>
-            </ChoiceBox>
-            <ChoiceBox maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="5.0" right="5.0" />
-               </GridPane.margin>
-            </ChoiceBox>
          </children>
       </GridPane>
    </center>
