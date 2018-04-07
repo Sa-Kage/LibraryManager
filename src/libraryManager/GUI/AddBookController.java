@@ -24,6 +24,7 @@ public class AddBookController {
 	private Main controller;
 	private PseudoClass error = PseudoClass.getPseudoClass("error");
 	private boolean edit = false;
+	private Book editBook;
 	
 	@FXML
 	private Button cancelButton;
@@ -59,6 +60,8 @@ public class AddBookController {
 	
 	public void setEdit(Book book) {
 		edit = true;
+		editBook = book;
+		
 		titleField.setDisable(true);
 		authorField.setDisable(true);
 		seriesField.setDisable(true);
@@ -104,7 +107,20 @@ public class AddBookController {
 	}
 	
 	private void editBook() {
-		
+		editBook.setLocation(locationField.getText());
+		editBook.setLent(lentToField.getText());
+		editBook.setComment(commentField.getText());
+		if(!seriesField.getText().isEmpty()) {
+			if(seriesNoField.getText().isEmpty()) {
+				seriesNoField.pseudoClassStateChanged(error, true);
+			} else if(!seriesNoField.getText().matches("-?[123456789]{1}\\d*|0")) {
+				seriesNoField.pseudoClassStateChanged(error, true);
+			} else {
+				editBook.setSeriesNumber(seriesNoField.getText());
+				seriesNoField.pseudoClassStateChanged(error, false);
+			}
+		}
+		((Stage) titleField.getScene().getWindow()).close();
 	}
 	
 	private void addBook() {
