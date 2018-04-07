@@ -23,6 +23,7 @@ public class AddBookController {
 
 	private Main controller;
 	private PseudoClass error = PseudoClass.getPseudoClass("error");
+	private boolean edit = false;
 	
 	@FXML
 	private Button cancelButton;
@@ -49,8 +50,35 @@ public class AddBookController {
 	@FXML
 	private TextField commentField;
 	
-	public void setMain(Main main) {
+	public void setAdd(Main main) {
 		controller = main;
+		
+		coverBox.getSelectionModel().selectFirst();
+		kindBox.getSelectionModel().selectFirst();
+	}
+	
+	public void setEdit(Book book) {
+		edit = true;
+		titleField.setDisable(true);
+		authorField.setDisable(true);
+		seriesField.setDisable(true);
+		kindBox.setDisable(true);
+		publisherField.setDisable(true);
+		languageField.setDisable(true);
+		coverBox.setDisable(true);
+		
+		// TODO: Set data to the fields
+		titleField.setText(book.getTitle());
+		authorField.setText(book.getAuthor());
+		seriesField.setText(book.getSeries());
+		seriesNoField.setText(book.getSeriesNumber());
+		publisherField.setText(book.getPublisher());
+		kindBox.getSelectionModel().select(book.getKind());
+		languageField.setText(book.getLanguage());
+		coverBox.getSelectionModel().select(book.getCover());
+		locationField.setText(book.getLocation());
+		lentToField.setText(book.getLent());
+		commentField.setText(book.getComment());
 	}
 	
 	@FXML
@@ -60,15 +88,25 @@ public class AddBookController {
 		ObservableList<Cover> coverList = FXCollections.observableArrayList();
 		coverList.addAll(Cover.HARDCOVER, Cover.PAPERBACK, Cover.SOFTCOVER);
 		coverBox.setItems(coverList);
-		coverBox.getSelectionModel().selectFirst();
 		
 		ObservableList<Kind> kindList = FXCollections.observableArrayList();
 		kindList.addAll(Kind.NOVEL, Kind.MANGA);
 		kindBox.setItems(kindList);
-		kindBox.getSelectionModel().selectFirst();
 	}
 	
 	@FXML
+	private void handleOkButtonClicked() {
+		if(edit) {
+			editBook();
+		} else {
+			addBook();
+		}
+	}
+	
+	private void editBook() {
+		
+	}
+	
 	private void addBook() {
 		// Check for correct input values
 		// TODO: Color fields with wrong input
@@ -136,7 +174,7 @@ public class AddBookController {
 	}
 	
 	@FXML
-	private void cancel() {
+	private void handleCancelButtonClicked() {
 		((Stage) cancelButton.getScene().getWindow()).close();
 	}
 }

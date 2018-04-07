@@ -69,7 +69,29 @@ public class Main extends Application {
 			addBook = loader.load();
 			AddBookController addBookCtrl = loader.getController();
 			
-			addBookCtrl.setMain(this);
+			addBookCtrl.setAdd(this);
+			Scene scene = new Scene(addBook);
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.initOwner(primaryStage);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showEditBookDialog(Book book) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/AddBook.fxml"), bundle);
+			BorderPane addBook;
+			addBook = loader.load();
+			AddBookController addBookCtrl = loader.getController();
+			
+			addBookCtrl.setAdd(this);
+			addBookCtrl.setEdit(book);
 			Scene scene = new Scene(addBook);
 			Stage stage = new Stage();
 			stage.setResizable(false);
