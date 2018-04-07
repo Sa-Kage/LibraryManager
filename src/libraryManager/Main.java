@@ -71,7 +71,6 @@ public class Main extends Application {
 			
 			addBookCtrl.setMain(this);
 			Scene scene = new Scene(addBook);
-			scene.getStylesheets().add(getClass().getResource("GUI/AddBook.css").toExternalForm());
 			Stage stage = new Stage();
 			stage.setResizable(false);
 			stage.initOwner(primaryStage);

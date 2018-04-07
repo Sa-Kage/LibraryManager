@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="185.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManager.GUI.AddBookController">
+<BorderPane prefHeight="185.0" prefWidth="610.0" stylesheets="@AddBook.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="libraryManager.GUI.AddBookController">
    <center>
       <GridPane prefWidth="857.0" BorderPane.alignment="CENTER">
         <columnConstraints>
