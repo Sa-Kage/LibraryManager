@@ -3,6 +3,7 @@ package libraryManager.GUI;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -21,6 +22,7 @@ import libraryManager.model.Book.Kind;
 public class AddBookController {
 
 	private Main controller;
+	private PseudoClass error = PseudoClass.getPseudoClass("error");
 	
 	@FXML
 	private Button cancelButton;
@@ -68,20 +70,70 @@ public class AddBookController {
 	
 	@FXML
 	private void addBook() {
-		// TODO: Read out values
-		String title = titleField.getText();
-		String author = authorField.getText();
-		String series = seriesField.getText();
-		int seriesNo = Integer.parseInt(seriesNoField.getText());
-		String publisher = publisherField.getText();
-		Kind kind = kindBox.getValue();
-		String language = languageField.getText();
-		Cover cover = coverBox.getValue();
-		String location = locationField.getText();
-		String lentTo = lentToField.getText();
-		String comment = commentField.getText();
-		controller.addBook(new Book(title, author, series, seriesNo, publisher, kind, language, cover, location, lentTo, comment));
-		((Stage) titleField.getScene().getWindow()).close();
+		// Check for correct input values
+		// TODO: Color fields with wrong input
+		byte correctValues = 5;
+		int seriesNo = Integer.MIN_VALUE;
+		if(titleField.getText().isEmpty()) {
+			titleField.pseudoClassStateChanged(error, true);
+		} else {
+			correctValues++;
+			titleField.pseudoClassStateChanged(error, false);
+		}
+		if(authorField.getText().isEmpty()) {
+			authorField.pseudoClassStateChanged(error, true);
+		}
+		 else {
+				correctValues++;
+				authorField.pseudoClassStateChanged(error, false);
+			}
+		if(!seriesField.getText().isEmpty()) {
+			if(seriesNoField.getText().isEmpty()) {
+				seriesNoField.pseudoClassStateChanged(error, true);
+			} else if(!seriesNoField.getText().matches("-?[123456789]{1}\\d*|0")) {
+				seriesNoField.pseudoClassStateChanged(error, true);
+			} else {
+				correctValues++;
+				seriesNoField.pseudoClassStateChanged(error, false);
+				seriesNo = Integer.parseInt(seriesNoField.getText());
+			}
+		} else {
+			correctValues++;
+		}
+		if(publisherField.getText().isEmpty()) {
+			publisherField.pseudoClassStateChanged(error, true);
+		} else {
+			correctValues++;
+			publisherField.pseudoClassStateChanged(error, false);
+		}
+		if(languageField.getText().isEmpty()) {
+			languageField.pseudoClassStateChanged(error, true);
+		} else {
+			correctValues++;
+			languageField.pseudoClassStateChanged(error, false);
+		}
+		if(locationField.getText().isEmpty()) {
+			locationField.pseudoClassStateChanged(error, true);
+		} else {
+			correctValues++;
+			locationField.pseudoClassStateChanged(error, false);
+		}
+		
+		if(correctValues == 11) {
+			// Read out values
+			String title = titleField.getText();
+			String author = authorField.getText();
+			String series = seriesField.getText();
+			String publisher = publisherField.getText();
+			Kind kind = kindBox.getValue();
+			String language = languageField.getText();
+			Cover cover = coverBox.getValue();
+			String location = locationField.getText();
+			String lentTo = lentToField.getText();
+			String comment = commentField.getText();
+			controller.addBook(new Book(title, author, series, seriesNo, publisher, kind, language, cover, location, lentTo, comment));
+			((Stage) titleField.getScene().getWindow()).close();
+		}
 	}
 	
 	@FXML
