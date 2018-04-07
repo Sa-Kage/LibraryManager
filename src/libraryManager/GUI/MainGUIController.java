@@ -1,14 +1,22 @@
 package libraryManager.GUI;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.util.Callback;
 import libraryManager.Main;
 import libraryManager.model.Book;
 import libraryManager.model.Book.Cover;
 import libraryManager.model.Book.Kind;
+import libraryManager.resources.ResourceReader;
 
 /**
  * 
@@ -50,6 +58,33 @@ public class MainGUIController {
 	@FXML
 	public void initialize() {
 		bookTable.setPlaceholder(new Label(""));
+		bookTable.setRowFactory(new Callback<TableView<Book>, TableRow<Book>>() {
+			@Override
+			public TableRow<Book> call(TableView<Book> tableView) {
+				final TableRow<Book> row = new TableRow<>();
+				final ContextMenu contextMenu = new ContextMenu();
+				final MenuItem edit = new MenuItem(ResourceReader.getString("BookTable.Edit"));
+				final MenuItem delete = new MenuItem(ResourceReader.getString("BookTable.Delete"));
+				edit.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						controller.showEditBookDialog(row.getItem());
+					}
+				});
+				delete.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent arg0) {
+						bookTable.getItems().remove(row.getItem());
+					}
+				});
+				contextMenu.getItems().add(edit);
+				contextMenu.getItems().add(delete);
+				row.contextMenuProperty().bind(Bindings.when(row.emptyProperty()).then((ContextMenu)null).otherwise(contextMenu));
+				return row;
+			}
+			
+		});
+		
 		titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
 		authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
 		seriesCol.setCellValueFactory(cellData -> cellData.getValue().seriesProperty());
