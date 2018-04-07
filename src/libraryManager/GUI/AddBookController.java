@@ -73,7 +73,6 @@ public class AddBookController {
 		// Check for correct input values
 		// TODO: Color fields with wrong input
 		byte correctValues = 5;
-		int seriesNo = Integer.MIN_VALUE;
 		if(titleField.getText().isEmpty()) {
 			titleField.pseudoClassStateChanged(error, true);
 		} else {
@@ -95,7 +94,6 @@ public class AddBookController {
 			} else {
 				correctValues++;
 				seriesNoField.pseudoClassStateChanged(error, false);
-				seriesNo = Integer.parseInt(seriesNoField.getText());
 			}
 		} else {
 			correctValues++;
@@ -124,6 +122,7 @@ public class AddBookController {
 			String title = titleField.getText();
 			String author = authorField.getText();
 			String series = seriesField.getText();
+			String seriesNo = seriesNoField.getText();
 			String publisher = publisherField.getText();
 			Kind kind = kindBox.getValue();
 			String language = languageField.getText();

@@ -15,7 +15,7 @@ public abstract class LibraryItem {
 	private final StringProperty TITLE;
 	private final StringProperty location;
 	private final StringProperty SERIES;
-	private final IntegerProperty seriesNumber;
+	private final StringProperty seriesNumber;
 	private final StringProperty comment;
 	
 	/**
@@ -26,11 +26,11 @@ public abstract class LibraryItem {
 	 * @param seriesNumber
 	 * @param comment
 	 */
-	public LibraryItem(String title, String location, String series, int seriesNumber, String comment) {
+	public LibraryItem(String title, String location, String series, String seriesNumber, String comment) {
 		this.TITLE 			= new SimpleStringProperty(title);
 		this.location 		= new SimpleStringProperty(location);
 		this.SERIES 		= new SimpleStringProperty(series);
-		this.seriesNumber 	= new SimpleIntegerProperty(seriesNumber);
+		this.seriesNumber 	= new SimpleStringProperty(seriesNumber);
 		this.comment 		= new SimpleStringProperty(comment);
 	}
 
@@ -82,21 +82,18 @@ public abstract class LibraryItem {
 	 * @return the number in the series
 	 */
 	public String getSeriesNumber() {
-		if(seriesNumber.get() == Integer.MIN_VALUE) {
-			return "";
-		}
-		return String.valueOf(seriesNumber.get());
+		return seriesNumber.get();
 	}
 	
 	/**
 	 * 
 	 * @param number
 	 */
-	public void setSeriesNumber(int number) {
+	public void setSeriesNumber(String number) {
 		seriesNumber.set(number);
 	}
 	
-	public IntegerProperty seriesNoProperty() {
+	public StringProperty seriesNoProperty() {
 		return seriesNumber;
 	}
 

@@ -73,7 +73,7 @@ public class Book extends LibraryItem {
 	 * @param location
 	 * @param comment
 	 */
-	public Book(String titel, String author, String series, int seriesNumber, 
+	public Book(String titel, String author, String series, String seriesNumber, 
 			String publisher, Kind kind, String language, Cover cover, 
 			String location, String lentTo, String comment) {
 		super(titel, location, series, seriesNumber, comment);

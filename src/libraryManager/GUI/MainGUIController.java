@@ -28,7 +28,7 @@ public class MainGUIController {
 	@FXML
 	private TableColumn<Book, String> seriesCol;
 	@FXML
-	private TableColumn<Book, Integer> seriesNoCol;
+	private TableColumn<Book, String> seriesNoCol;
 	@FXML
 	private TableColumn<Book, String> publisherCol;
 	@FXML
@@ -53,7 +53,7 @@ public class MainGUIController {
 		titleCol.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
 		authorCol.setCellValueFactory(cellData -> cellData.getValue().authorProperty());
 		seriesCol.setCellValueFactory(cellData -> cellData.getValue().seriesProperty());
-		seriesNoCol.setCellValueFactory(cellData -> cellData.getValue().seriesNoProperty().asObject());
+		seriesNoCol.setCellValueFactory(cellData -> cellData.getValue().seriesNoProperty());
 		publisherCol.setCellValueFactory(cellData -> cellData.getValue().publisherProperty());
 		kindCol.setCellValueFactory(cellData -> cellData.getValue().kindProperty());
 		languageCol.setCellValueFactory(cellData -> cellData.getValue().languageProperty());
