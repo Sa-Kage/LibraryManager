@@ -9,9 +9,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import libraryManager.Main;
-import libraryManager.Model.Book;
-import libraryManager.Model.Book.Cover;
-import libraryManager.Model.Book.Kind;
+import libraryManager.model.Book;
+import libraryManager.model.Book.Cover;
+import libraryManager.model.Book.Kind;
 
 /**
  * 

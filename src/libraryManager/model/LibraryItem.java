@@ -1,4 +1,4 @@
-package libraryManager.Model;
+package libraryManager.model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -81,8 +81,11 @@ public abstract class LibraryItem {
 	/**
 	 * @return the number in the series
 	 */
-	public int getSeriesNumber() {
-		return seriesNumber.get();
+	public String getSeriesNumber() {
+		if(seriesNumber.get() == Integer.MIN_VALUE) {
+			return "";
+		}
+		return String.valueOf(seriesNumber.get());
 	}
 	
 	/**

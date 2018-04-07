@@ -6,9 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import libraryManager.Main;
-import libraryManager.Model.Book;
-import libraryManager.Model.Book.Cover;
-import libraryManager.Model.Book.Kind;
+import libraryManager.model.Book;
+import libraryManager.model.Book.Cover;
+import libraryManager.model.Book.Kind;
 
 /**
  * 
