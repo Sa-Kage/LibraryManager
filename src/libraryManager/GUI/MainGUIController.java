@@ -28,6 +28,13 @@ public class MainGUIController {
 	private Main controller;
 	
 	@FXML
+	private MenuItem newMenuItem;
+	@FXML
+	private MenuItem saveMenuItem;
+	@FXML
+	private MenuItem saveAsMenuItem;
+	
+	@FXML
 	private TableView<Book> bookTable;
 	@FXML
 	private TableColumn<Book, String> titleCol;
@@ -57,6 +64,10 @@ public class MainGUIController {
 	 */
 	@FXML
 	public void initialize() {
+		newMenuItem.disableProperty().bind(Bindings.isEmpty(bookTable.getItems()));
+		//saveMenuItem.disableProperty().bind(Bindings.);
+		//saveAsMenuItem.disableProperty().bind(Bindings.isNotEmpty(bookTable.getItems()));
+		
 		bookTable.setPlaceholder(new Label(""));
 		bookTable.setRowFactory(new Callback<TableView<Book>, TableRow<Book>>() {
 			@Override
@@ -116,5 +127,25 @@ public class MainGUIController {
 	@FXML
 	private void showAddBookDialog() {
 		controller.showAddBookDialog();
+	}
+	
+	@FXML
+	private void handleOpenFileClicked() {
+		controller.openFile();
+	}
+	
+	@FXML
+	private void handleSaveAsClicked() {
+		controller.saveFileAs();
+	}
+	
+	@FXML
+	private void handleSaveClicked() {
+		controller.saveFile();
+	}
+	
+	@FXML
+	private void handleNewClicked() {
+		// TODO:
 	}
 }

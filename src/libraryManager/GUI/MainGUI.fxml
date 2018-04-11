@@ -57,12 +57,12 @@
               <menus>
                 <Menu mnemonicParsing="false" text="%MainGUI.File">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="%MainGUI.New" />
-                        <MenuItem mnemonicParsing="false" text="%MainGUI.Open" />
-                        <MenuItem mnemonicParsing="false" text="%MainGUI.Recent" />
+                        <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#handleNewClicked" text="%MainGUI.New" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleOpenFileClicked" text="%MainGUI.Open" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="%MainGUI.Recent" />
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="%MainGUI.Save" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="%MainGUI.SaveAs" />
+                        <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="%MainGUI.Save" />
+                        <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#handleSaveAsClicked" text="%MainGUI.SaveAs" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem mnemonicParsing="false" text="%MainGUI.Quit" />
                   </items>
